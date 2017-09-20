@@ -10118,7 +10118,7 @@ void omx_vdec::handle_extradata(OMX_BUFFERHEADERTYPE *p_buf_hdr)
                             DEBUG_PRINT_ERROR("Unsupported framepacking type");
                             stereo_output_mode = HAL_NO_3D;
                     }
-                    DEBUG_PRINT_LOW("setMetaData FRAMEPACKING : fpa_type = %d, content_interpretation_type = %d, stereo_output_mode= %d",
+                    DEBUG_PRINT_LOW("setMetaData FRAMEPACKING : fpa_type = %lu, content_interpretation_type = %lu, stereo_output_mode= %d",
                         s3d_frame_packing_payload->fpa_type, s3d_frame_packing_payload->content_interpretation_type, stereo_output_mode);
                     if (client_extradata & OMX_FRAMEPACK_EXTRADATA) {
                         append_framepack_extradata(p_extra, s3d_frame_packing_payload);
@@ -11715,7 +11715,7 @@ OMX_ERRORTYPE omx_vdec::describeColorFormat(OMX_PTR pParam) {
     DEBUG_PRINT_LOW("  YWidth x YHeight : %d x %d", img->mWidth, img->mHeight);
     for (size_t i = 0; i < img->mNumPlanes; ++i) {
         DEBUG_PRINT_LOW("    Plane[%d] : offset=%d / xStep=%d / yStep = %d",
-                (int)i, img->mPlane[i].mOffset, img->mPlane[i].mColInc, img->mPlane[i].mRowInc);
+                i, img->mPlane[i].mOffset, img->mPlane[i].mColInc, img->mPlane[i].mRowInc);
     }
     return OMX_ErrorNone;
 #endif //FLEXYUV_SUPPORTED
